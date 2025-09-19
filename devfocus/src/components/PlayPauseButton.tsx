@@ -7,7 +7,7 @@ const PlayPauseButton = ({ isActive, onToggle }: PlayPauseButtonProps) => {
     <button
       id="play-pause-button"
       data-testid="play-pause-button"
-	  aria-label="Play Pause Button"
+	  aria-label={isActive ? "Pause Timer" : "Play Timer"}
 	  role="button"
       onClick={onToggle}
     >

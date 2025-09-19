@@ -5,7 +5,7 @@ import PlayPauseButton from "./PlayPauseButton";
 import ResetButton from "./ResetButton";
 
 const Timer = () => {
-  const { timeRemaining, isActive, startTimer, pauseTimer } =
+  const { timeRemaining, isActive, startTimer, pauseTimer, resetTimer} =
     useCountdownTimer();
 
   const handleToggle = () => {
@@ -23,7 +23,7 @@ const Timer = () => {
         <PlayPauseButton isActive={isActive} onToggle={handleToggle} />
       </div>
       <div className="space-x-4">
-        <ResetButton onClick={() => {}}/>
+        <ResetButton onClick={resetTimer}/>
       </div>
     </div>
   );

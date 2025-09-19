@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, act } from "@testing-library/react";
 import Timer from "../Timer";
+import { on } from "events";
 
 describe("Timer", () => {
   beforeEach(() => {
@@ -95,5 +96,68 @@ describe("Timer", () => {
     // Timer should stop at zero
     expect(timerDisplay).toHaveTextContent('00:00');
     expect(button).toHaveTextContent('Play');
+  });
+
+  it('should stay at initial state when reset button clicked', () => {
+    render(<Timer />);
+
+    const timerDisplay = screen.getByTestId('timer-display');
+    const playPausebutton = screen.getByTestId('play-pause-button');
+	const resetButton = screen.getByTestId('reset-button');
+
+	expect(timerDisplay).toHaveTextContent('40:00')
+	expect(playPausebutton).toHaveTextContent('Play')
+
+	fireEvent.click(resetButton)
+	
+	expect(timerDisplay).toHaveTextContent('40:00')
+	expect(playPausebutton).toHaveTextContent('Play')
+
+  })
+
+  it('should return to initial state when time passed and reset clicked', () => {
+    render(<Timer />);
+
+    const timerDisplay = screen.getByTestId('timer-display');
+    const playPausebutton = screen.getByTestId('play-pause-button');
+	const resetButton = screen.getByTestId('reset-button');
+
+	fireEvent.click(playPausebutton)
+
+	act(() => {
+		vi.advanceTimersByTime(40 * 1000)
+	})
+
+	expect(timerDisplay).toHaveTextContent('39:20')
+	expect(playPausebutton).toHaveTextContent('Pause')
+
+	fireEvent.click(resetButton)
+	
+	expect(timerDisplay).toHaveTextContent('40:00')
+	expect(playPausebutton).toHaveTextContent('Play')
+
+  });
+
+  it('should return to initial state after timer completion and reset clicked', () => {
+    render(<Timer />);
+
+    const timerDisplay = screen.getByTestId('timer-display');
+    const playPausebutton = screen.getByTestId('play-pause-button');
+	const resetButton = screen.getByTestId('reset-button');
+
+	fireEvent.click(playPausebutton)
+
+	act(() => {
+		vi.advanceTimersByTime(2400 * 1000)
+	})
+
+	expect(timerDisplay).toHaveTextContent('00:00')
+	expect(playPausebutton).toHaveTextContent('Play')
+
+	fireEvent.click(resetButton)
+	
+	expect(timerDisplay).toHaveTextContent('40:00')
+	expect(playPausebutton).toHaveTextContent('Play')
+
   });
 });

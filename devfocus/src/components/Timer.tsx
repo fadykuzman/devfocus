@@ -1,19 +1,16 @@
-'use client'
+"use client";
 import { useCountdownTimer } from "../hooks/useCountdownTimer";
 import TimerDisplay from "./TimerDisplay";
 import PlayPauseButton from "./PlayPauseButton";
+import ResetButton from "./ResetButton";
 
 const Timer = () => {
-	const {
-    timeRemaining,
-    isActive,
-    startTimer,
-    pauseTimer,
-	} = useCountdownTimer();
+  const { timeRemaining, isActive, startTimer, pauseTimer } =
+    useCountdownTimer();
 
-	const handleToggle = () => {
-		isActive ? pauseTimer() : startTimer()
-	};
+  const handleToggle = () => {
+    isActive ? pauseTimer() : startTimer();
+  };
 
   return (
     <div
@@ -24,6 +21,9 @@ const Timer = () => {
       <TimerDisplay timeRemainingInSeconds={timeRemaining} />
       <div className="space-x-4">
         <PlayPauseButton isActive={isActive} onToggle={handleToggle} />
+      </div>
+      <div className="space-x-4">
+        <ResetButton onClick={() => {}}/>
       </div>
     </div>
   );

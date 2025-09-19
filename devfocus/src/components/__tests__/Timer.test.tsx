@@ -14,6 +14,7 @@ describe("Timer", () => {
     render(<Timer />);
     expect(screen.getByTestId("timer-display")).toHaveTextContent("40:00");
     expect(screen.getByTestId("play-pause-button")).toHaveTextContent("Play");
+	expect(screen.getByTestId("reset-button")).toHaveTextContent("Reset");
     expect(screen.getByTestId("timer-container")).toBeInTheDocument();
   });
 

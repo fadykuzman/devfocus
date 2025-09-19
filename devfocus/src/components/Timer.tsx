@@ -1,15 +1,32 @@
+'use client'
+import { useCountdownTimer } from "../hooks/useCountdownTimer";
 import TimerDisplay from "./TimerDisplay";
-
+import PlayPauseButton from "./PlayPauseButton";
 
 const Timer = () => {
-	return (
-		<div className="flex flex-col items-center justify-center min-h-screen py-2">
-			<h1 className="text-4xl font-bold mb-8">Dev Focus Timer</h1>
-			<TimerDisplay timeRemainingInSeconds={240}/>
-			<div className="space-x-4">
-			</div>
-		</div>
-	);
-}
+	const {
+    timeRemaining,
+    isActive,
+    startTimer,
+    pauseTimer,
+	} = useCountdownTimer();
+
+	const handleToggle = () => {
+		isActive ? pauseTimer() : startTimer()
+	};
+
+  return (
+    <div
+      id="timer-container"
+      data-testid="timer-container"
+      className="flex flex-col items-center justify-center min-h-screen py-2"
+    >
+      <TimerDisplay timeRemainingInSeconds={timeRemaining} />
+      <div className="space-x-4">
+        <PlayPauseButton isActive={isActive} onToggle={handleToggle} />
+      </div>
+    </div>
+  );
+};
 
 export default Timer;

@@ -28,7 +28,7 @@ describe('PlayPauseButton', () => {
 		const mockToggle = vi.fn();
 		render(<PlayPauseButton isActive={true} onToggle={mockToggle} />);
 		const button = screen.getByTestId('play-pause-button');
-		expect(button).toHaveAccessibleName('Play Pause Button');
+		expect(button).toHaveAccessibleName('Pause Timer');
 		expect(button).toHaveRole('button');
 	});
 

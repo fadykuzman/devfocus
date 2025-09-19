@@ -10,6 +10,7 @@ const ResetButton = ({onClick}: ResetButtonProps) => {
 		onClick={onClick}
 		role='button'
 		aria-label='Reset Timer'
+		type="button"
 		>Reset</button>
 	);
 }

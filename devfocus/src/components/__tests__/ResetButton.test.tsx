@@ -19,7 +19,7 @@ describe('Reset Button', () => {
 		
 	});
 
-	it('should conatain accessability attributes', () => {
+	it('should contain accessability attributes', () => {
 		const mockClick = vi.fn();
 		render(<ResetButton onClick={mockClick}/>);
 		const button = screen.getByTestId('reset-button');

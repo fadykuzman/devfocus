@@ -1,0 +1,3 @@
+interface TimerDisplayProps {
+	timeRemainingInSeconds: number; 
+}

@@ -13,6 +13,8 @@ A simple and effective focus timer designed specifically for developers to enhan
 - A break count-down timer that has a default value of 10 minutes.
 - Start, pause, and reset functionality for both timers.
 - Ability to customize focus and break durations.
+- Suggested keyboard shortcuts.
+- Suggested times for different activities (e.g. coding, meetings, reading, debugging, codereview, etc.). Do a research from literature and studies and developer surveys to find optimal times for different activities.
 
 ### Future considerations
 - Default behavior for timer completion is stop at 00:00.

@@ -20,3 +20,5 @@ A simple and effective focus timer designed specifically for developers to enhan
 - Default behavior for timer completion is stop at 00:00.
 - Option for timer completion for focus/break to run in negative time, calculated as total with details of overtime (e.g. set to 40 mins, overtime 5 minutes, total session 45 minutes).
 - Option for timer completion for focus/break to auto-start to next mode.
+- Show the projected daily tasks on a timeline. Adaptable manually - each focus/break/meeting can be draggable and exchangeable - or adapted automatically from calendar or activity tracking.
+- plugin for VSCode / Vim / IntelliJ / Figma(?)

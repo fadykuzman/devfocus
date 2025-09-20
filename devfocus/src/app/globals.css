@@ -28,6 +28,9 @@
 	--timer-muted-dark: #a0aec0;
 	--timer-background-dark: #1a202c;
 	--timer-surface-dark: #2d3748;
+
+	--spacing-32: 8rem;
+	--spacing-12: 3rem;
 }
 
 @media (prefers-color-scheme: dark) {

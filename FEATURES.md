@@ -21,6 +21,7 @@ A simple and effective focus timer designed specifically for developers to enhan
 - Suggested times for different activities (e.g. coding, meetings, reading, debugging, codereview, etc.). Do a research from literature and studies and developer surveys to find optimal times for different activities.
 
 ### COULD HAVE
+- Offer different themes/color palettes
 
 ### WON'T HAVE
 

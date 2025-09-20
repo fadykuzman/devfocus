@@ -16,9 +16,9 @@ const Timer = () => {
 		<div
 			id="timer-container"
 			data-testid="timer-container"
-			className="flex flex-col items-center justify-center min-h-screen py-2"
+			className="flex flex-col items-center justify-center min-h-screen py-2 safe-all"
 		>
-			<div className="mt-12">
+			<div className="mt-8 md:mt-12 lg:mt-18">
 				<TimerDisplay timeRemainingInSeconds={timeRemaining} />
 			</div>
 			<div className="flex space-x-4">

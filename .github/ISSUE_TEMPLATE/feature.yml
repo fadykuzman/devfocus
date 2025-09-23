@@ -1,0 +1,59 @@
+name: Feature Implementation
+description: Track implementation of a new feature or component
+title: "[Feature] "
+labels: ["feature", "enhancement"]
+assignees: []
+body:
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Development Phase
+      description: Which phase does this feature belong to?
+      options:
+        - Phase 1 - Typography & Visual Design
+        - Phase 2 - Unified Control Component
+        - Phase 3 - Minimize/Maximize Feature
+        - Core Features
+        - Developer Features
+        - Could Have Features
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: What is the priority of this feature?
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Detailed description of the feature to implement
+      placeholder: Describe what needs to be built and why
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What needs to be true for this to be considered complete?
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] All tests pass
+        - [ ] Component documented
+    validations:
+      required: true
+  - type: textarea
+    id: technical-notes
+    attributes:
+      label: Technical Implementation Notes
+      description: Any technical considerations or constraints
+      placeholder: Dependencies, architectural considerations, etc.
+    validations:
+      required: false

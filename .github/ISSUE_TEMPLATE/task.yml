@@ -1,0 +1,65 @@
+name: Development Task
+description: Track specific development tasks and improvements
+title: "[Task] "
+labels: ["task"]
+assignees: []
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: Task Category
+      description: What type of task is this?
+      options:
+        - Component Development
+        - Testing
+        - Documentation
+        - Performance Optimization
+        - Accessibility
+        - Infrastructure
+        - Bug Fix
+    validations:
+      required: true
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Development Phase
+      description: Which phase does this task belong to?
+      options:
+        - Phase 1 - Typography & Visual Design
+        - Phase 2 - Unified Control Component
+        - Phase 3 - Minimize/Maximize Feature
+        - Cross-Phase Requirements
+        - Core Features
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Task Description
+      description: What needs to be done?
+      placeholder: Clear description of the work to be performed
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements
+      description: Specific requirements or constraints
+      placeholder: |
+        - Must maintain backward compatibility
+        - Should follow existing patterns
+        - Must include tests
+    validations:
+      required: false
+  - type: textarea
+    id: definition-of-done
+    attributes:
+      label: Definition of Done
+      description: When is this task considered complete?
+      placeholder: |
+        - [ ] Implementation complete
+        - [ ] Tests written and passing
+        - [ ] Documentation updated
+        - [ ] Code reviewed
+    validations:
+      required: true

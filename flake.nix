@@ -37,6 +37,8 @@
                 pkgs.nodePackages.autoprefixer
                 pkgs.nodePackages.eslint
                 pkgs.playwright-driver.browsers
+                pkgs.gh
+                pkgs.gh-notify
               ];
               # env.PNPM_VERSION = yarnVersion;
               env.PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";

@@ -36,7 +36,14 @@
                 pkgs.nodePackages.postcss
                 pkgs.nodePackages.autoprefixer
                 pkgs.nodePackages.eslint
+                pkgs.playwright-driver.browsers
               ];
+              # env.PNPM_VERSION = yarnVersion;
+              env.PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+              env.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = true;
+              env.PLAYWRIGHT_NODEJS_PATH = "${pkgs.nodejs}/bin/node";
+              env.PLAYWRIGHT_LAUNCH_OPTIONS_EXECUTABLE_PATH = "${pkgs.playwright-driver.browsers}/chromium-1048/chrome-linux/chrome";
+              env.PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1;
 
               languages = {
                 typescript.enable = true;
@@ -48,6 +55,7 @@
                   };
                 };
               };
+
             }
           ];
         };

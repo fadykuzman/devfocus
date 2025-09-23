@@ -23,11 +23,11 @@
 	--timer-hover: rgba(74, 144, 226, 0.1);
 	--timer-active: rgba(74, 144, 226, 0.2);
 	--timer-focus: rgba(74, 144, 226, 0.3);
-	--timer-primary-dark: #e2e8f0;
-	--timer-accent-dark: #63b3ed;
-	--timer-muted-dark: #a0aec0;
-	--timer-background-dark: #1a202c;
-	--timer-surface-dark: #2d3748;
+	/* --timer-primary-dark: #e2e8f0; */
+	/* --timer-accent-dark: #63b3ed; */
+	/* --timer-muted-dark: #a0aec0; */
+	/* --timer-background-dark: #1a202c; */
+	/* --timer-surface-dark: #2d3748; */
 
 	--text-timer-mobile: 18vw;
 	--text-timer-desktop: 120px;
@@ -42,12 +42,12 @@
 	--breakpoint-xl: 1280px;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-	}
-}
+/* @media (prefers-color-scheme: dark) { */
+/* 	:root { */
+/* 		--background: #0a0a0a; */
+/* 		--foreground: #ededed; */
+/* 	} */
+/* } */
 
 @supports (padding: env(safe-area-inset-top)) {
 	.safe-top {

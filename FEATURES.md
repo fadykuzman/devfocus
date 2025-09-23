@@ -22,6 +22,8 @@ A simple and effective focus timer designed specifically for developers to enhan
 
 ### COULD HAVE
 - Offer different themes/color palettes
+- Dark Mode
+- Scenes (Rising sun, dolphins swimming, ...)
 
 ### WON'T HAVE
 

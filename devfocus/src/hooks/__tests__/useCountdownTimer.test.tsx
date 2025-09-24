@@ -202,14 +202,10 @@ describe("Break timer", () => {
 		expect(result.current.timeRemaining).toBe(600);
 	});
 
-	it("should initialize focus timer when type is 'focus'", () => {
-		// Test: useCountdownTimer({ type: 'focus' })
-		// Expect: timeRemaining = 2400, isActive = false
-	});
-
 	it("should default to focus timer for backward compatibility", () => {
-		// Test: useCountdownTimer() (no params)
-		// Expect: timeRemaining = 2400 (unchanged behavior)
+		const { result } = renderHook(() => useCountdownTimer());
+		expect(result.current.isActive).toBe(false);
+		expect(result.current.timeRemaining).toBe(2400);
 	});
 });
 

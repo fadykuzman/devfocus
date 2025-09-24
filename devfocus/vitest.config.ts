@@ -19,11 +19,13 @@ export default defineConfig({
 		globals: true,
 		projects: [
 			{
+				plugins: [react()],
 				test: {
 					name: "unit",
 					include: ["src/**/*.{test,spec}.{ts,tsx}"],
 					environment: "jsdom",
 					globals: true,
+					setupFiles: ["./src/test/setup.ts"],
 				},
 			},
 			{

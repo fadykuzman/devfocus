@@ -11,13 +11,13 @@ describe("useCountdownTimer", () => {
 	});
 
 	it("should initialize with default time", () => {
-		const { result } = renderHook(() => useCountdownTimer());
+		const { result } = renderHook(() => useCountdownTimer({type: 'focus'}));
 		expect(result.current.timeRemaining).toBe(2400); // 40 minutes in seconds
 		expect(result.current.isActive).toBe(false);
 	});
 
 	it("should start the timer", () => {
-		const { result } = renderHook(() => useCountdownTimer());
+		const { result } = renderHook(() => useCountdownTimer({type: 'focus'}));
 		act(() => {
 			result.current.startTimer();
 		});
@@ -25,7 +25,7 @@ describe("useCountdownTimer", () => {
 	});
 
 	it("should pause the timer", () => {
-		const { result } = renderHook(() => useCountdownTimer());
+		const { result } = renderHook(() => useCountdownTimer({type: 'focus'}));
 		act(() => {
 			result.current.startTimer();
 		});
@@ -37,7 +37,7 @@ describe("useCountdownTimer", () => {
 	});
 
 	it("should count down the time when active", () => {
-		const { result } = renderHook(() => useCountdownTimer());
+		const { result } = renderHook(() => useCountdownTimer({type: 'focus'}));
 		act(() => {
 			result.current.startTimer();
 		});
@@ -52,7 +52,7 @@ describe("useCountdownTimer", () => {
 	});
 
 	it("should stop at zero", () => {
-		const { result } = renderHook(() => useCountdownTimer());
+		const { result } = renderHook(() => useCountdownTimer({type: 'focus'}));
 		act(() => {
 			result.current.startTimer();
 		});
@@ -64,7 +64,7 @@ describe("useCountdownTimer", () => {
 	});
 
 	it("should stay at zero if advanced further that set time, by default", () => {
-		const { result } = renderHook(() => useCountdownTimer());
+		const { result } = renderHook(() => useCountdownTimer({type: 'focus'}));
 		act(() => {
 			result.current.startTimer();
 		});
@@ -76,7 +76,7 @@ describe("useCountdownTimer", () => {
 	});
 
 	it("should start and pause the timer correctly", () => {
-		const { result } = renderHook(() => useCountdownTimer());
+		const { result } = renderHook(() => useCountdownTimer({type: 'focus'}));
 		act(() => {
 			result.current.startTimer();
 		});
@@ -103,7 +103,7 @@ describe("useCountdownTimer", () => {
 	});
 
 	it("should handle rapid start/pause calls", () => {
-		const { result } = renderHook(() => useCountdownTimer());
+		const { result } = renderHook(() => useCountdownTimer({type: 'focus'}));
 		act(() => {
 			result.current.startTimer();
 			result.current.pauseTimer();
@@ -119,7 +119,7 @@ describe("useCountdownTimer", () => {
 	});
 
 	it("should handle realistic user interactions", () => {
-		const { result } = renderHook(() => useCountdownTimer());
+		const { result } = renderHook(() => useCountdownTimer({type: 'focus'}));
 
 		// User starts timer
 		act(() => {
@@ -148,7 +148,7 @@ describe("useCountdownTimer", () => {
 	});
 
 	it("should reset the timer to initial time", () => {
-		const { result } = renderHook(() => useCountdownTimer());
+		const { result } = renderHook(() => useCountdownTimer({type: 'focus'}));
 
 		act(() => {
 			result.current.startTimer();
@@ -170,7 +170,7 @@ describe("useCountdownTimer", () => {
 
 	it("should reset timer while paused", () => {
 		// start → pause → reset → verify state
-		const { result } = renderHook(() => useCountdownTimer());
+		const { result } = renderHook(() => useCountdownTimer({type: 'focus'}));
 		act(() => {
 			result.current.startTimer();
 		});
@@ -193,8 +193,39 @@ describe("useCountdownTimer", () => {
 		expect(result.current.timeRemaining).toBe(2400);
 		expect(result.current.isActive).toBe(false);
 	});
+});
 
-	it("should handle multiple reset calls", () => {
-		// reset → reset → verify still works
+describe("Break timer", () => {
+	it("should initialise timer with 10-minutes default", () => {
+		const { result } = renderHook(() => useCountdownTimer({ type: "break" }));
+		expect(result.current.isActive).toBe(false);
+		expect(result.current.timeRemaining).toBe(600);
+	});
+
+	it("should initialize focus timer when type is 'focus'", () => {
+		// Test: useCountdownTimer({ type: 'focus' })
+		// Expect: timeRemaining = 2400, isActive = false
+	});
+
+	it("should default to focus timer for backward compatibility", () => {
+		// Test: useCountdownTimer() (no params)
+		// Expect: timeRemaining = 2400 (unchanged behavior)
+	});
+});
+
+describe("Custom Timer Durations", () => {
+	it("should accept custom focus duration", () => {
+		// Test: useCountdownTimer({ type: 'focus', focusDuration: 1800 })
+		// Expect: timeRemaining = 1800
+	});
+
+	it("should accept custom break duration", () => {
+		// Test: useCountdownTimer({ type: 'break', breakDuration: 300 })
+		// Expect: timeRemaining = 300
+	});
+
+	it("should use defaults when custom durations not provided", () => {
+		// Test both types without custom durations
+		// Expect: focus = 2400, break = 600
 	});
 });

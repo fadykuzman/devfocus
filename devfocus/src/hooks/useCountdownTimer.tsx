@@ -1,44 +1,55 @@
 import { useState, useEffect, useCallback } from "react";
 
-const INITIAL_TIME = 2400; // 40 minutes in seconds
+const DEFAULT_FOCUS_DURATION = 2400; // 40 minutes in seconds
+const DEFAULT_BREAK_DURATION = 600;
 
-export function useCountdownTimer() {
-  const [timeRemaining, setTimeRemaining] = useState(INITIAL_TIME);
-  const [isActive, setIsActive] = useState(false);
+interface useCountdownTimerOptions {
+	type?: "focus" | "break";
+}
 
-  const startTimer = useCallback(() => {
-    setIsActive(true);
-  }, []);
+export function useCountdownTimer(options: useCountdownTimerOptions = {}) {
+	const { type = "focus" } = options;
 
-  const pauseTimer = useCallback(() => {
-    setIsActive(false);
-  }, []);
+	const getInitialTime = useCallback(() => {
+		return type === "break" ? DEFAULT_BREAK_DURATION : DEFAULT_FOCUS_DURATION;
+	}, [type]);
 
-  const resetTimer = useCallback(() => {
-	  setIsActive(false);
-	  setTimeRemaining(INITIAL_TIME);
-  }, []);
+	const [timeRemaining, setTimeRemaining] = useState(() => getInitialTime());
+	const [isActive, setIsActive] = useState(false);
 
-  useEffect(() => {
-    if (!isActive) return;
+	const startTimer = useCallback(() => {
+		setIsActive(true);
+	}, []);
 
-    const interval = setInterval(() => {
-      setTimeRemaining((prev) => {
-        if (prev <= 1) {
-          setIsActive(false);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [isActive]);
+	const pauseTimer = useCallback(() => {
+		setIsActive(false);
+	}, []);
 
-  return {
-    timeRemaining,
-    isActive,
-    startTimer,
-    pauseTimer,
-	resetTimer,
-  };
-};
+	const resetTimer = useCallback(() => {
+		setIsActive(false);
+		setTimeRemaining(getInitialTime());
+	}, [type, getInitialTime]);
+
+	useEffect(() => {
+		if (!isActive) return;
+
+		const interval = setInterval(() => {
+			setTimeRemaining((prev) => {
+				if (prev <= 1) {
+					setIsActive(false);
+					return 0;
+				}
+				return prev - 1;
+			});
+		}, 1000);
+		return () => clearInterval(interval);
+	}, [isActive]);
+
+	return {
+		timeRemaining,
+		isActive,
+		startTimer,
+		pauseTimer,
+		resetTimer,
+	};
+}

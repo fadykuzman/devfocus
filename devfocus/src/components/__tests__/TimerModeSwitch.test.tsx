@@ -12,7 +12,7 @@ describe("TimerModeSwitch - Mode Display", () => {
       />,
     );
     const modeSwitch = screen.getByTestId("timer-mode-switch");
-    expect(modeSwitch).toHaveTextContent("FOCUS . 40min");
+    expect(modeSwitch).toHaveTextContent("FOCUS &bull; 40min");
   });
   it('should display "BREAK • 10min" when currentMode is break', () => {
     render(
@@ -23,7 +23,7 @@ describe("TimerModeSwitch - Mode Display", () => {
       />,
     );
     const modeSwitch = screen.getByTestId("timer-mode-switch");
-    expect(modeSwitch).toHaveTextContent("BREAK . 10min");
+    expect(modeSwitch).toHaveTextContent("BREAK &bull; 10min");
   });
 });
 

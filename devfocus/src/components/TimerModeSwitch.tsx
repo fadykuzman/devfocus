@@ -25,13 +25,11 @@ const TimerModeSwitch = ({ currentMode, isTimerActive, onModeChange }: TimerMode
 				disabled={isTimerActive}
 				aria-label="Switch between focus and break mode"
 				aria-checked={currentMode === 'break'}
-				aria-describedby="mode-info"
-				aria-controls="timer-display"
 				onClick={changeMode}
 			/>
 			<span id="mode-info">
 				{currentMode === 'focus' ?
-						'FOCUS . 40min' : 'BREAK . 10min'}
+						'FOCUS &bull; 40min' : 'BREAK &bull; 10min'}
 				</span >
 		</div>
 

@@ -56,3 +56,28 @@ When implementing this focus timer application, consider:
 - Minimal system resources usage
 - Accessibility features for all users
 - Timer accuracy and reliability
+
+## Design Decisions
+
+### Timer Mode Switching (Issue #10)
+
+**Decision**: Toggle Switch Approach for focus/break timer mode switching
+
+**Rationale**:
+- **Direct Interaction**: Simple toggle switch provides clear, immediate mode switching without hidden interactions
+- **Visual Clarity**: Always visible switch clearly shows current mode and switching capability
+- **Intentional Switching**: Toggle requires deliberate action but is more discoverable than hidden options
+- **Future-Proof**: Toggle pattern easily accommodates additional timer types with multi-state switches
+
+**Implementation Details**:
+- Toggle switch prominently displayed at top of timer interface
+- Clean black/white monochrome design with typography differentiation
+- Focus mode: Left side of toggle with "FOCUS • 40min" label
+- Break mode: Right side of toggle with "BREAK • 10min" label
+- Switch disabled when timer is active to prevent accidental mode changes
+- Confirmation modal when switching during active timer
+- Keyboard shortcuts deferred until after core functionality is complete
+
+**Alternative Approaches Considered**:
+1. **Minimalist Toggle**: Simple toggle switch - rejected due to potential accidental activation
+2. **Structured Tab Approach**: Tab-based interface - rejected as too application-like and space-consuming

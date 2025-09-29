@@ -1,17 +1,18 @@
+import { TimerMode } from "../types/timer";
 import { useState, useEffect, useCallback } from "react";
 
 const DEFAULT_FOCUS_DURATION = 2400; // 40 minutes in seconds
 const DEFAULT_BREAK_DURATION = 600;
 
 interface useCountdownTimerOptions {
-	type?: "focus" | "break";
+	type?: TimerMode;
 }
 
 export function useCountdownTimer(options: useCountdownTimerOptions = {}) {
-	const { type = "focus" } = options;
+	const { type = TimerMode.FOCUS} = options;
 
 	const getInitialTime = useCallback(() => {
-		return type === "break" ? DEFAULT_BREAK_DURATION : DEFAULT_FOCUS_DURATION;
+		return type === TimerMode.BREAK ? DEFAULT_BREAK_DURATION : DEFAULT_FOCUS_DURATION;
 	}, [type]);
 
 	const [timeRemaining, setTimeRemaining] = useState(() => getInitialTime());

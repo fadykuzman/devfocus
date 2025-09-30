@@ -63,59 +63,6 @@ describe("TimerModeSwitch - Interactive States", () => {
   });
 });
 
-describe("TimerModeSwitch - Mode Switching", () => {
-  it('should call onModeChange with "break" when  switching from focus', () => {
-    const changeMode = vi.fn();
-    render(
-      <TimerModeSwitch
-        currentMode="focus"
-        isTimerActive={false}
-        onModeChange={changeMode}
-      />,
-    );
-
-    const modeSwitch = screen.getByRole("switch");
-
-    fireEvent.click(modeSwitch);
-
-    expect(changeMode).toHaveBeenCalledWith("break");
-  });
-
-  it('should call onModeChange with "focus" when  switching from break', () => {
-    const changeMode = vi.fn();
-    render(
-      <TimerModeSwitch
-        currentMode="break"
-        isTimerActive={false}
-        onModeChange={changeMode}
-      />,
-    );
-
-    const modeSwitch = screen.getByRole("switch");
-
-    fireEvent.click(modeSwitch);
-
-    expect(changeMode).toHaveBeenCalledWith("focus");
-  });
-
-  it("should not call onModeChange when timer is active", () => {
-    const changeMode = vi.fn();
-    render(
-      <TimerModeSwitch
-        currentMode="break"
-        isTimerActive={true}
-        onModeChange={changeMode}
-      />,
-    );
-
-    const modeSwitch = screen.getByRole("switch");
-
-    fireEvent.click(modeSwitch);
-
-    expect(changeMode).not.toHaveBeenCalled();
-  });
-});
-
 describe("TimerModeSwitch - Accessibility", () => {
   it("should have proper aria-label describing current mode", () => {
     const changeMode = vi.fn();

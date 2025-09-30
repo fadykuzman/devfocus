@@ -26,6 +26,7 @@ export function useCountdownTimer(options: useCountdownTimerOptions = {}) {
 		setIsActive(false);
 	}, []);
 
+
 	const resetTimer = useCallback(() => {
 		setIsActive(false);
 		setTimeRemaining(getInitialTime());
@@ -45,6 +46,10 @@ export function useCountdownTimer(options: useCountdownTimerOptions = {}) {
 		}, 1000);
 		return () => clearInterval(interval);
 	}, [isActive]);
+
+	useEffect(() => {
+		resetTimer();
+	}, [type, resetTimer]);
 
 	return {
 		timeRemaining,

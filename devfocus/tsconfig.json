@@ -5,6 +5,11 @@
 	"types": ["vitest/globals"],
     "allowJs": true,
     "skipLibCheck": true,
+    "noUnusedLocals": true,        // Error on unused variables
+    "noUnusedParameters": true,    // Error on unused function parameters
+    "exactOptionalPropertyTypes": true, // Stricter optional properties
+    "noImplicitOverride": true,    // Require 'override' keyword
+    "noPropertyAccessFromIndexSignature": true, // Stricter object access
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,

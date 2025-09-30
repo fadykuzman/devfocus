@@ -72,8 +72,8 @@ When implementing this focus timer application, consider:
 **Implementation Details**:
 - Toggle switch prominently displayed at top of timer interface
 - Clean black/white monochrome design with typography differentiation
-- Focus mode: Left side of toggle with "FOCUS • 40min" label
-- Break mode: Right side of toggle with "BREAK • 10min" label
+- Focus mode: Left side of toggle with "FOCUS" label
+- Break mode: Right side of toggle with "BREAK" label
 - Switch disabled when timer is active to prevent accidental mode changes
 - Confirmation modal when switching during active timer
 - Keyboard shortcuts deferred until after core functionality is complete

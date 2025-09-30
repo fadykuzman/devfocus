@@ -3,6 +3,7 @@ import { useCountdownTimer } from "../hooks/useCountdownTimer";
 import TimerDisplay from "./TimerDisplay";
 import PlayPauseButton from "./PlayPauseButton";
 import ResetButton from "./ResetButton";
+import TimerModeSwitch from "./TimerModeSwitch";
 
 const Timer = () => {
 	const { timeRemaining, isActive, startTimer, pauseTimer, resetTimer } =
@@ -18,6 +19,7 @@ const Timer = () => {
 			data-testid="timer-container"
 			className="flex flex-col items-center justify-center min-h-screen py-2 safe-all"
 		>
+		
 			<div className="mt-8 md:mt-12 lg:mt-18">
 				<TimerDisplay timeRemainingInSeconds={timeRemaining} />
 			</div>

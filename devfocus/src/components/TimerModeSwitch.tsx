@@ -31,7 +31,7 @@ const TimerModeSwitch = ({
         onClick={changeMode}
       />
       <span id="mode-info">
-        {currentMode === TimerMode.FOCUS ? "FOCUS &bull; 40min" : "BREAK &bull; 10min"}
+        {currentMode === TimerMode.FOCUS ? "FOCUS" : "BREAK"}
       </span>
     </div>
   );

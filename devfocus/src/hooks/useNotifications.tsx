@@ -21,37 +21,34 @@ export function useNotifications(options: UseNotificationsOptions = {}) {
       },
     },
   };
-  const isSupported = "Notification" in window;
+  const isSupported = typeof window !== "undefined" && "Notification" in window;
   const [permission, setPermission] = useState<NotificationPermission>(
     isSupported ? window.Notification.permission : "denied",
   );
-  const requestPermission = useCallback(async () => {
-    if (isSupported && permission === "default") {
-      const newPermission = await window.Notification.requestPermission();
-      setPermission(newPermission);
-    }
-  }, [isSupported, permission]);
+  const requestPermission = useCallback(async (): Promise<boolean> => {
+    if (!isSupported) return false;
+    if (window.Notification.permission !== "default") return true;
 
-  const notify = useCallback(() => {
+    const newPermission = await window.Notification.requestPermission();
+    setPermission(newPermission);
+    return newPermission === "granted";
+  }, [isSupported]);
+
+  const notify = useCallback((): boolean => {
     if (!isSupported) {
       console.warn("Notifications are not supported in this browser.");
       return false;
     }
 
-    if (permission === "default") {
-      console.warn("Permission not requested yet.");
+    const current = window.Notification.permission;
+    if (current !== "granted") {
+      console.warn(`Notification permission is "${current}".`);
       return false;
     }
-
-    if (permission === "denied") {
-      console.warn("User has denied notifications.");
-      return false;
-    }
-    if (isSupported && permission === "granted") {
-      const { title, options } = message[type];
-      new window.Notification(title, options);
-    }
-  }, [isSupported, permission, type]);
+    const { title, options } = message[type];
+    new window.Notification(title, options);
+    return true;
+  }, [isSupported, type]);
 
   return {
     isSupported,

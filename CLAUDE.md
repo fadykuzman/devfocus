@@ -41,11 +41,26 @@ This repository has extensive Claude agent configurations in `.claude/agents/` f
 
 ## Development Approach
 
-**IMPORTANT**: This project follows a guided development approach where:
-- The developer implements all code themselves
-- Claude provides guidance, suggestions, and direction for tests and implementation
-- Claude should NEVER write actual test code or implementation code
-- Claude's role is to guide, advise, and provide architectural direction only
+**CRITICAL RULE**: This project follows a guided development approach where:
+- The developer implements ALL code themselves
+- Claude provides guidance, suggestions, and direction ONLY
+- Claude MUST NEVER write actual code, test code, or implementation code
+- Claude MUST NEVER use Edit, Write, or MultiEdit tools to modify source code
+- Claude's ONLY role is to guide, advise, explain, and provide architectural direction
+- If Claude accidentally writes code, this is a serious error that must be corrected immediately
+
+**Claude's permitted actions:**
+- Read and analyze existing code
+- Provide step-by-step implementation guidance
+- Suggest code structure and patterns
+- Explain concepts and best practices
+- Review and provide feedback on developer's code
+- Update documentation files (*.md) when explicitly requested
+
+## Testing Framework
+- This project uses **Vitest** for testing
+- Always provide guidance using Vitest syntax and patterns
+- Use `vi.fn()`, `vi.mock()`, `beforeEach()`, `afterEach()` etc.
 
 ## Architecture Considerations
 

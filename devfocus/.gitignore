@@ -44,3 +44,6 @@ tags.*
 
 *storybook.log
 storybook-static
+
+.next/
+node_modules/

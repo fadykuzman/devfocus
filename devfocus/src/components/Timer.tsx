@@ -1,6 +1,7 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect} from "react";
 import { useCountdownTimer } from "../hooks/useCountdownTimer";
+import { useNotifications } from "../hooks/useNotifications";
 import TimerDisplay from "./TimerDisplay";
 import PlayPauseButton from "./PlayPauseButton";
 import ResetButton from "./ResetButton";
@@ -13,6 +14,8 @@ const Timer = () => {
   const { timeRemaining, isActive, startTimer, pauseTimer, resetTimer } =
     useCountdownTimer({ type: mode });
 
+  const {requestPermission, notify} = useNotifications({type: mode}); 
+
   const handleToggle = useCallback((): void => {
     isActive ? pauseTimer() : startTimer();
   }, [isActive, pauseTimer, startTimer]); 
@@ -24,6 +27,20 @@ const Timer = () => {
       setMode(TimerMode.FOCUS);
     }
   }, [mode]);
+
+
+  useEffect(() => {
+	  requestPermission();
+  },[requestPermission]);
+
+  useEffect(() => {
+	  if (timeRemaining === 0 && isActive) {
+		  console.log("Timer ended, sending notification");
+		  notify();
+		  pauseTimer();
+	  }
+
+  }, [timeRemaining, isActive, notify, pauseTimer]);
 
   return (
     <div
